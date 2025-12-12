@@ -1,16 +1,26 @@
-function loadView() {
+function loadView(view = "dashboard") {
   const app = document.getElementById("app");
-  const hash = window.location.hash.replace("#", "") || "dashboard";
+  if (!app) return;
 
   app.innerHTML = "";
 
-  if (hash === "dashboard") app.innerHTML = window.dashboardView || "<p>Dashboard not loaded</p>";
-  if (hash === "history")   app.innerHTML = window.historyView   || "<p>History not loaded</p>";
-  if (hash === "route")     app.innerHTML = window.routeView     || "<p>Route not loaded</p>";
+  if (view === "dashboard") app.innerHTML = window.dashboardView || "<p>Dashboard not loaded</p>";
+  if (view === "history") app.innerHTML = window.historyView || "<p>History not loaded</p>";
+  if (view === "route") app.innerHTML = window.routeView || "<p>Route not loaded</p>";
 
   // set button active state
-  if (typeof setActiveDockButton === "function") setActiveDockButton();
+  if (typeof setActiveDockButton === "function") setActiveDockButton(view);
 }
 
-window.addEventListener("hashchange", loadView);
-window.addEventListener("load", loadView);
+function navigate(view) {
+  loadView(view);
+}
+
+document.querySelectorAll("[data-view]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const view = btn.getAttribute("data-view");
+    navigate(view);
+  });
+});
+
+window.addEventListener("load", () => loadView());
