@@ -13,4 +13,4 @@ function loadView() {
 }
 
 window.addEventListener("hashchange", loadView);
-document.addEventListener("DOMContentLoaded", loadView);
+window.addEventListener("load", loadView);

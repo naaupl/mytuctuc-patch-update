@@ -1,12 +1,12 @@
 function setActiveDockButton() {
-  const path = window.location.pathname;
+  const hash = window.location.hash.replace("#", "") || "dashboard";
 
   document.querySelectorAll("[data-page]").forEach(button => {
     const page = button.getAttribute("data-page");
 
     button.classList.remove("dock-active");
 
-    if (path.includes(page)) {
+    if (page === hash) {
       button.classList.add("dock-active");
     }
   });
@@ -14,11 +14,9 @@ function setActiveDockButton() {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  setActiveDockButton();
-
   const dockHTML = `
     <div class="lg:hidden dock dock-xl min-h-30 border-black">
-        <button data-page="home" onclick="window.location.hash='dashboard'">
+        <button data-page="dashboard" onclick="window.location.hash='dashboard'">
             <img src="../../assets/svg/homeButton.svg" class="size-16">
         </button>
 
@@ -33,4 +31,5 @@ document.addEventListener("DOMContentLoaded", () => {
   `;
 
   document.body.insertAdjacentHTML("beforeend", dockHTML);
+  window.addEventListener("hashchange", setActiveDockButton);
 });

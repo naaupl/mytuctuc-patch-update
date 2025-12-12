@@ -6,22 +6,20 @@
     <body>
         <div id="app"></div>
 
+        <!-- views -->
+        <script src="view.dashboard.js"></script>
+        <script src="view.history.js"></script>
+        <script src="view.route.js"></script>
+
+        <!-- route -->
+        <script src="../../routes/student.route.js"></script>
+
         <!-- navigation dock -->
         <script src="../../components/user/dock.js"></script>
-
-        <!-- page content -->
-        <div class="">
-            <script src="view.dashboard.js"></script>
-            <script src="view.history.js"></script>
-            <script src="view.route.js"></script>
-        </div>
 
         <!-- hidden in mobile -->
         <div class="hidden lg:flex justify-center items-center min-h-screen">
             <div class="text-4xl">Not compatible in desktop yet</div>
         </div>
-
-        <!-- route -->
-        <script src="../../routes/student.route.js"></script>
     </body>
 </html>

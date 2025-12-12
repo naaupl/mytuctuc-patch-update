@@ -1,5 +1,5 @@
 window.routeView = `
-  <section id="route" class="p-5">
+  <section id="route" class="lg:hidden p-5">
     <h1 class="text-6xl font-semibold">Route</h1>
     
     <div class="mt-4">
